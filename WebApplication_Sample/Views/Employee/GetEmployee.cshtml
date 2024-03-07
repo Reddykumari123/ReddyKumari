@@ -1,0 +1,45 @@
+﻿@model List<dynamic>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Time Tracker</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: auto;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .highlight {
+            background-color: #ffcccc;
+        }
+    </style>
+</head>
+<body>
+    <h2 align="center">Employee Time Tracker</h2>
+    <table>
+        <tr>
+            <th>Employee Name</th>
+            <th>Total Time Worked (hours)</th>
+        </tr>
+        @foreach (var employee in Model)
+        {
+            <tr class="@((double)employee.TotalTimeWorked < 100 ? "highlight" : "")">
+                <td>@employee.Name</td>
+                <td>@employee.TotalTimeWorked</td>
+            </tr>
+        }
+    </table>
+</body>
+</html>
